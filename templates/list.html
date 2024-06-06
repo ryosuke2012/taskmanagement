@@ -1,7 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+list
+{% endblock title %}
+
+{% block header %}
+一覧
+{% endblock header %}
+
+{% block content %}
 {% for item in object_list %}
-<ul>
-<li>{{ item.task_name }}</li>
-<li>{{ item.status_id }}</li>
-<li>{{ item.start_date }}</li>
-</ul>
+<div class="alert alert-warning" role="alert">
+  <p>{{ item.task_name }} {{ item.start_date }} {{ item.status_id }}</p>
+  <a href="#" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">編集画面へ</a>
+  <a href="#" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">削除画面へ</a>
+  <a href="#" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">削除画面へ</a>
+</div>
 {% endfor %}
+{% endblock content %}
