@@ -9,6 +9,10 @@ class Status(models.Model):
   def __str__(self):
     return self.status
 
+class TaskManager(models.Manager):
+  def get_queryset(self):
+    return super().get_queryset().filter(deleted_flg=False)
+
 class Task(models.Model):
   task_name = models.CharField('タスク名', max_length=20)
   status_id = models.ForeignKey(Status,
@@ -17,6 +21,7 @@ class Task(models.Model):
   start_date = models.DateField('作成日時', auto_now_add=True)
   end_date = models.DateField('完了日時', null=True, blank=True)
   deleted_flg = models.BooleanField('削除フラグ', default=False)
+  objects = TaskManager()
 
   def save(self, *args, **kwargs):
     # 新しいステータスを取得
@@ -26,8 +31,11 @@ class Task(models.Model):
       self.end_date = timezone.now()
     elif self.status_id != completed_status and self.end_date:
       self.end_date = None
-
     super().save(*args, **kwargs)
+
+  def delete(self):
+    self.deleted_flg = True
+    self.save()
 
   def __str__(self):
     return self.task_name
