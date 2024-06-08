@@ -12,6 +12,7 @@ create
 <form action='' method='POST'>
   {% csrf_token %} 
   {{ form.as_p }}
-  <input type='submit' value='create'>
+  <input type='submit' value='作成'>
+  <a href="{% url 'list' %}" class="btn btn-outline-dark btn-sm" tabindex="-1" role="button" aria-disabled="true">一覧ページへ</a>
 </form>
 {% endblock content %}

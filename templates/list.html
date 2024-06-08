@@ -9,12 +9,13 @@ list
 {% endblock header %}
 
 {% block content %}
+<a href="{% url 'create' %}" class="btn btn-secondary mb-2" tabindex="-1" role="button" aria-disabled="true">新規作成</a>
 {% for item in object_list %}
 <div class="alert alert-warning" role="alert">
   <p>{{ item.task_name }} {{ item.start_date }} {{ item.status_id }}</p>
-  <a href="#" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">編集画面へ</a>
-  <a href="#" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">削除画面へ</a>
-  <a href="#" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">削除画面へ</a>
+  <a href="{% url 'update' item.pk %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">編集画面へ</a>
+  <a href="{% url 'delete' item.pk %}" class="btn btn-success" tabindex="-1" role="button" aria-disabled="true">削除画面へ</a>
+  <a href="{% url 'detail' item.pk %}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">詳細画面へ</a>
 </div>
 {% endfor %}
 {% endblock content %}

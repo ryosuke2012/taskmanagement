@@ -12,6 +12,7 @@ update
 <form action='' method='POST'>
   {% csrf_token %} 
   {{ form.as_p }}
-  <input type='submit' value='update'>
+  <input type='submit' value='更新'>
+  <a href="{% url 'list' %}" class="btn btn-outline-dark btn-sm" tabindex="-1" role="button" aria-disabled="true">一覧ページへ</a>
 </form>
 {% endblock content %}

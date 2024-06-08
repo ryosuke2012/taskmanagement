@@ -9,7 +9,7 @@ delete
 {% endblock header %}
 
 {% block content %}
-<div class="row">
+<div class="row mb-4">
   <div class="col-md-2">
     タスク名:
   </div>
@@ -17,7 +17,7 @@ delete
     {{ object.task_name }}
   </div>
 </div>
-<div class="row">
+<div class="row mb-4">
   <div class="col-md-2">
     ステータス:
   </div>
@@ -25,7 +25,7 @@ delete
     {{ object.status_id }}
   </div>
 </div>
-<div class="row">
+<div class="row mb-4">
   <div class="col-md-2">
     作成日時:
   </div>
@@ -33,7 +33,7 @@ delete
     {{ object.start_date }}
   </div>
 </div>
-<div class="row">
+<div class="row mb-4">
   <div class="col-md-2">
     完了日時:
   </div>
@@ -44,6 +44,7 @@ delete
 
 <form action='' method='POST'>
   {% csrf_token %} 
-  <input type='submit' value='delete'>
+  <input type='submit' value='削除'>
+  <a href="{% url 'list' %}" class="btn btn-outline-dark btn-sm" tabindex="-1" role="button" aria-disabled="true">一覧ページへ</a>
 </form>
 {% endblock content %}
