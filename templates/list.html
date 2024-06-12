@@ -5,12 +5,12 @@ list
 {% endblock title %}
 
 {% block header %}
-タスク一覧ページ
+タスク一覧
 {% endblock header %}
 
 {% block content %}
 <a href="{% url 'create' %}" class="btn btn-secondary mb-2" tabindex="-1" role="button" aria-disabled="true">新規作成</a>
-{% for item in object_list %}
+{% for item in tasks %}
 <div class="alert alert-warning" role="alert">
   <p>{{ item.task_name }} {{ item.start_date }} {{ item.status_id }}</p>
   <a href="{% url 'update' item.pk %}" class="btn btn-info" tabindex="-1" role="button" aria-disabled="true">編集画面へ</a>

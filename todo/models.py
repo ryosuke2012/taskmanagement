@@ -51,9 +51,5 @@ class Task(models.Model):
       self.end_date = None
     super().save(*args, **kwargs)
 
-  def delete(self):
-    self.deleted_flg = True
-    self.save()
-
   def __str__(self):
     return self.task_name

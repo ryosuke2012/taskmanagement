@@ -5,7 +5,7 @@ detail
 {% endblock title %}
 
 {% block header %}
-タスク詳細ページ
+タスク詳細
 {% endblock header %}
 
 {% block content %}
@@ -14,7 +14,7 @@ detail
     タスク名:
   </div>
   <div class="col-md-2">
-    {{ object.task_name }}
+    {{ task.task_name }}
   </div>
 </div>
 <div class="row mb-4">
@@ -22,7 +22,7 @@ detail
     ステータス:
   </div>
   <div class="col-md-2">
-    {{ object.status_id }}
+    {{ task.status_id }}
   </div>
 </div>
 <div class="row mb-4">
@@ -30,7 +30,7 @@ detail
     作成日時:
   </div>
   <div class="col-md-2">
-    {{ object.start_date }}
+    {{ task.start_date }}
   </div>
 </div>
 <div class="row mb-4">
@@ -38,7 +38,7 @@ detail
     完了日時:
   </div>
   <div class="col-md-2">
-    {{ object.end_date }}
+    {{ task.end_date }}
   </div>
 </div>
 <a href="{% url 'list' %}" class="btn btn-outline-dark btn-sm" tabindex="-1" role="button" aria-disabled="true">一覧ページへ</a>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if form.instance.pk %}edit{% else %}create{% endif %}
+{% endblock title %}
+
+{% block header %}
+{% if form.instance.pk %}タスク編集{% else %}新規作成{% endif %}
+{% endblock header %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">登録</button>
+  </form>
+  <a href="{% url 'list' %}">一覧ページへ</a>
+{% endblock %}
