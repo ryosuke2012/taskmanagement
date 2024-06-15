@@ -25,10 +25,12 @@ class TaskManager(models.Manager):
     return super().get_queryset().filter(deleted_flg=False)
 
 class Task(models.Model):
-  task_name = models.CharField('タスク名', max_length=20, validators=[validate_task_name])
+  task_name = models.CharField('タスク名', max_length=20, validators=[validate_task_name], null=False, blank=False)
   status_id = models.ForeignKey(Status,
                       verbose_name='ステータス',
                       on_delete=models.CASCADE,
+                      null=False,
+                      blank=False,
                       validators=[validate_status_id])
   start_date = models.DateField('作成日時', auto_now_add=True)
   end_date = models.DateField('完了日時', null=True, blank=True)
